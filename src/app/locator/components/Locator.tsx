@@ -1,5 +1,11 @@
+import { LocatorMap } from './LocatorMap';
+
 export const Locator = () => {
-  return <div className="p-40">Locator</div>;
+  return (
+    <div className="py-20 flex justify-center">
+      <LocatorMap />
+    </div>
+  );
 };
 
 export default Locator;
