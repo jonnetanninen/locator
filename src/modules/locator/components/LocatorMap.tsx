@@ -34,17 +34,17 @@ const entityIcon = new L.Icon({
 
 export const LocatorMap = ({ entities, userPosition, setUserPosition }: Props) => {
   return (
-    <div className="h-200 flex-1 max-w-screen-2xl">
+    <div className="h-200 w-full max-w-screen-2xl">
       <MapContainer
         center={[20, 0]}
         zoom={2.3}
         minZoom={2.3}
         scrollWheelZoom={false}
         maxBounds={[
-          [180, -180],
-          [-180, 180],
+          [90, -180],
+          [-90, 180],
         ]}
-        className="h-full"
+        className="h-full w-full"
       >
         <LocationFinder setUserPosition={setUserPosition} />
         <TileLayer
