@@ -3,10 +3,10 @@
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import 'leaflet-defaulticon-compatibility';
+import { useState } from 'react';
+import L, { LatLng } from 'leaflet';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import { EntityWithLocation } from '../types';
-import { useState } from 'react';
-import { LatLng } from 'leaflet';
 
 type Props = {
   entities: EntityWithLocation[];
@@ -20,6 +20,16 @@ const LocationFinder = ({ setUserPosition }: { setUserPosition: (arg0: LatLng) =
   });
   return null;
 };
+
+const entityIcon = new L.Icon({
+  iconUrl:
+    'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41],
+});
 
 export const LocatorMap = ({ entities }: Props) => {
   const [userPosition, setUserPosition] = useState<LatLng>();
@@ -47,6 +57,7 @@ export const LocatorMap = ({ entities }: Props) => {
           <Marker
             position={[x.lat, x.long]}
             key={x.id}
+            icon={entityIcon}
           />
         ))}
       </MapContainer>
