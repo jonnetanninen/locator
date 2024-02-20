@@ -3,13 +3,14 @@
 import 'leaflet/dist/leaflet.css';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.webpack.css'; // Re-uses images from ~leaflet package
 import 'leaflet-defaulticon-compatibility';
-import { useState } from 'react';
 import L, { LatLng } from 'leaflet';
 import { MapContainer, Marker, TileLayer, useMapEvents } from 'react-leaflet';
 import { EntityWithLocation } from '../types';
 
 type Props = {
   entities: EntityWithLocation[];
+  userPosition?: LatLng;
+  setUserPosition: (arg0: LatLng) => void;
 };
 
 const LocationFinder = ({ setUserPosition }: { setUserPosition: (arg0: LatLng) => void }) => {
@@ -31,9 +32,7 @@ const entityIcon = new L.Icon({
   shadowSize: [41, 41],
 });
 
-export const LocatorMap = ({ entities }: Props) => {
-  const [userPosition, setUserPosition] = useState<LatLng>();
-
+export const LocatorMap = ({ entities, userPosition, setUserPosition }: Props) => {
   return (
     <div className="h-200 flex-1 max-w-screen-2xl">
       <MapContainer
