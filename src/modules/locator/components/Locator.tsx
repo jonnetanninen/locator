@@ -2,9 +2,10 @@
 
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
+import { LatLng } from 'leaflet';
 import { getEntities, getLocations } from '../apiCalls';
 import { Entity, EntityWithLocation, Location } from '../types';
-import { LatLng } from 'leaflet';
+import LocatorList from './LocatorList';
 
 const LocatorMap = dynamic(() => import('./LocatorMap'), { ssr: false });
 
@@ -36,12 +37,13 @@ export const Locator = () => {
   }, []);
 
   return (
-    <div className="py-20 flex justify-center">
+    <div className="py-20 flex justify-center items-center flex-col">
       <LocatorMap
         entities={entitiesWithCoordinates}
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
+      <LocatorList entities={entitiesWithCoordinates} />
     </div>
   );
 };
