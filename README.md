@@ -1,6 +1,6 @@
 ## Demo
 
-[Try demo](https://locator-prb4jr2k1-jonnetanninen.vercel.app/)
+[Try demo](https://locator-omega.vercel.app/)
 
 ## Getting Started
 
