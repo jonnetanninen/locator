@@ -1,4 +1,5 @@
 import { LatLng } from 'leaflet';
+import Image from 'next/image';
 import { EntityWithLocation } from '../types';
 import { calcDistance, sortEntitiesByDistance } from '../helpers';
 
@@ -25,11 +26,13 @@ const LocatorList = ({ entities, userPosition }: Props) => {
           key={entity.id}
           className="bg-stone-100 p-8 rounded-md flex gap-x-6 text-stone-800 shadow-md flex-wrap"
         >
-          <img
+          <Image
+            alt=""
             className="w-auto h-24"
+            // Height and width needs to be provided here for next/image to avoid layout shift with external images
+            height={96}
+            width={71}
             src={entity.image}
-            height=""
-            width="80"
             aria-hidden
           />
           <div className="flex justify-between flex-1 flex-col lg:flex-row gap-3">
@@ -41,7 +44,11 @@ const LocatorList = ({ entities, userPosition }: Props) => {
             </div>
             {entity.distance && (
               <div className="flex justify-end">
-                <img
+                <Image
+                  alt=""
+                  // Height and width needs to be provided here for next/image to avoid layout shift with external images
+                  height={24}
+                  width={15}
                   className="h-6 w-auto mr-2"
                   src="https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png"
                   aria-hidden
