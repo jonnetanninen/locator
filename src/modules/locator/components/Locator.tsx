@@ -6,6 +6,7 @@ import { LatLng } from 'leaflet';
 import { fetchEntities, fetchLocations } from '../apiCalls';
 import { Entity, EntityWithLocation, Location } from '../types';
 import LocatorList from './LocatorList';
+import LocatorListPlaceholder from './LocatorListPlaceholder';
 
 const LocatorMap = dynamic(() => import('./LocatorMap'), { ssr: false });
 
@@ -37,7 +38,8 @@ const Locator = () => {
   }, []);
 
   return (
-    <div className="py-20 flex justify-center items-center flex-col">
+    <div className="xl:py-3 flex justify-start items-center flex-col w-full max-w-screen-2xl h-screen">
+      <h1 className="sr-only">Locator app</h1>
       <LocatorMap
         entities={entitiesWithCoordinates}
         userPosition={userPosition}

@@ -34,7 +34,7 @@ const entityIcon = new L.Icon({
 
 export const LocatorMap = ({ entities, userPosition, setUserPosition }: Props) => {
   return (
-    <div className="h-200 w-full max-w-screen-2xl">
+    <div className="h-1/2 xl:h-2/3 w-full shadow-md mb-3">
       <MapContainer
         center={[20, 0]}
         zoom={2.3}
@@ -44,7 +44,7 @@ export const LocatorMap = ({ entities, userPosition, setUserPosition }: Props) =
           [90, -180],
           [-90, 180],
         ]}
-        className="h-full w-full"
+        className="h-full w-full rounded-md"
       >
         <LocationFinder setUserPosition={setUserPosition} />
         <TileLayer
