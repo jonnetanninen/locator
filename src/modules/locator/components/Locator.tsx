@@ -43,7 +43,14 @@ const Locator = () => {
         userPosition={userPosition}
         setUserPosition={setUserPosition}
       />
-      <LocatorList entities={entitiesWithCoordinates} />
+      {userPosition ? (
+        <LocatorList
+          entities={entitiesWithCoordinates}
+          userPosition={userPosition}
+        />
+      ) : (
+        <LocatorListPlaceholder />
+      )}
     </div>
   );
 };
