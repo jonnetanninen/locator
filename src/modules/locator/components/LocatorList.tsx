@@ -4,7 +4,6 @@ type Props = {
   entities: EntityWithLocation[];
 };
 
-export const LocatorList = ({ entities }: Props) => {
   return (
     <div className="w-full max-w-screen-2xl gap-4 pt-4 h-80 overflow-y-scroll grid grid-cols-2">
       {entities.map((entity) => (

@@ -9,7 +9,7 @@ import LocatorList from './LocatorList';
 
 const LocatorMap = dynamic(() => import('./LocatorMap'), { ssr: false });
 
-export const Locator = () => {
+const Locator = () => {
   const [locations, setLocations] = useState<Location[]>([]);
   const [entities, setEntities] = useState<Entity[]>([]);
   const [userPosition, setUserPosition] = useState<LatLng>();
