@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import dynamic from 'next/dynamic';
 import { LatLng } from 'leaflet';
-import { getEntities, getLocations } from '../apiCalls';
+import { fetchEntities, fetchLocations } from '../apiCalls';
 import { Entity, EntityWithLocation, Location } from '../types';
 import LocatorList from './LocatorList';
 
@@ -15,14 +15,14 @@ export const Locator = () => {
   const [userPosition, setUserPosition] = useState<LatLng>();
 
   useEffect(() => {
-    getLocations().then((data) => {
+    fetchLocations().then((data) => {
       const decryptedLocations: Location[] = JSON.parse(atob(data));
       setLocations(decryptedLocations);
     });
   }, []);
 
   useEffect(() => {
-    getEntities(locations.map((location) => location.id)).then((data) => {
+    fetchEntities(locations.map((location) => location.id)).then((data) => {
       setEntities(data);
     });
   }, [locations]);
